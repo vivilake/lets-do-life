@@ -18,6 +18,20 @@ $(document).ready(function() {
 	    'logo-bg.jpg'
 	]);
 
+	function getQueryVariable(variable) {
+	    var query = window.location.search.substring(1);
+	    var vars = query.split('&');
+	    for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	            return decodeURIComponent(pair[1]);
+	        }
+	    }
+	    console.log('Query variable %s not found', variable);
+	}
+
+	var test = getQueryVariable('test');
+
 	var ethnicityArray = ["White", "Black", "Hispanic"]
 	var genderArray = ["Male", "Female", "Trans Male", "Trans Female", "Nonbinary"]
 	var economicArray = ["Poverty Line", "Working Class", "Middle Class", "Wealthy"]
@@ -238,12 +252,6 @@ $(document).ready(function() {
 	var educationIntent = null;
 	var localeIntent = null;
 	var industryIntent = null;
-	/*
-	console.log(playerEthnicity)
-	console.log(playerGender)
-	console.log(ethEconRoll)
-	console.log(playerEcon)
-	*/
 
 	$('html').css({
 		'background-image' : 'url(intro-bg.jpg)',
@@ -263,7 +271,7 @@ $(document).ready(function() {
 	var decision3text = 'The scariest thing about living in a new place is worrying about money.<br>So it\'s important to use that education to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll never work a day of your life!<br>So what would you love to do?<br><span>Select One</span><br>'+
 		'<div data-industry="Medicine" class="optionitem finale">Medicine</div><div data-industry="Engineering and Technology" class="optionitem finale">Engineering and Technology</div><div data-industry="Business" class="optionitem finale">Business</div><div data-industry="Creative" class="optionitem finale">Creative</div>';
 
-	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey'
+	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey<br><br>Play Again?'
 
 	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
 
@@ -283,7 +291,7 @@ $(document).ready(function() {
 		wealthtext = 'Your family often had to make sacrifices, some of which kept you from taking advantage of opportunities that might have helped you grow.<br>';
 	}
 
-	var didbesttext = 'Even though school could be challenging, you did your best. In the end, that\'s all anyone can do.<br>';
+	var didbesttext = 'Even though school could be challenging, you did your best.<br>In the end, that\'s all anyone can do.<br>';
 
 	var eductext = ''
 	if (playerEduc == "Dropout") {
@@ -292,14 +300,9 @@ $(document).ready(function() {
 		eductext = 'You graduated high school and achieved '+playerEduc+' degree.<br>';
 	}
 
-	var finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext;
-	console.log("XXXXXX");
-	console.log(finaletext);
-	console.log(toughtext)
+	var finaletext = null;
 
-
-
-	var fadeDuration = 1200;
+	var fadeDuration = 200;
 
 	function logoScreen() {
 		var bindd1 = function () {
@@ -319,7 +322,6 @@ $(document).ready(function() {
 	}
 
 	function decision1() {
-		console.log($(this))
 		var bindd2 = function () {
 			$('.decision2').on('click', decision2)
 		}
@@ -342,7 +344,6 @@ $(document).ready(function() {
 		var bindd3 = function () {
 			$('.decision3').on('click', decision3)
 		}
-		console.log(educationIntent)
 		$('.content').fadeOut(fadeDuration, function() {
 		  $('html').css({
 			   'background-image' : 'url(decision2.jpg)',
@@ -353,9 +354,7 @@ $(document).ready(function() {
 	}
 
 	function decision3() {
-		console.log($(this))
 		localeIntent = $(this).data('locale');
-		console.log(localeIntent)
 		var bindfinale = function () {
 			$('.finale').on('click', finale)
 		}
@@ -370,29 +369,35 @@ $(document).ready(function() {
 
 	function finale() {
 		industryIntent = $(this).data('industry');
-		console.log(finaletext)
 		playerJobName = myJob(industryIntent, playerEduc).name;
-		playerSalary = myJob(industryIntent, playerEduc).salary;;
+		playerSalary = myJob(industryIntent, playerEduc).salary;
+		var jobtext = 'You managed to get a job in '+industryIntent+' as '+playerJobName+'.<br>';
+		var salarytext = 'Your estimated earnings are '+playerSalary+' per year.<br>';
+		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext;
 
 		var bindcredits = function () {
 			$('html').on('click', credits)
+			if (test == "true") {
+				$('.content').append("Your Ethnicity is: "+playerEthnicity+"<br>"+
+					"Your Gender is: "+playerGender+"<br>"+
+					"ethEconRoll: "+ethEconRoll+"<br>"+
+					"ethEducRoll: "+ethEducRoll+"<br>"+
+					"playerEcon: "+playerEcon+"<br>"+
+					"playerEduc: "+playerEduc+"<br>"+
+					"educationIntent: "+educationIntent+"<br>"+
+					"localeIntent: "+localeIntent+"<br>"+
+					"industryIntent: "+industryIntent+"<br>"+
+					"playerJobName: "+playerJobName+"<br>"+
+					"playerSalary: "+playerSalary+"<br>"
+				)
+			}
 		}
 		$('.content').fadeOut(fadeDuration, function() {
 		  $('html').css({
 			   'background-image' : 'url(intro-bg.jpg)',
 			   'background-size' : 'cover'
 			});
-			$('.content').html("Your Ethnicity is: "+playerEthnicity+"<br>"+
-				"Your Gender is: "+playerGender+"<br>"+
-				"ethEconRoll: "+ethEconRoll+"<br>"+
-				"ethEducRoll: "+ethEducRoll+"<br>"+
-				"playerEcon: "+playerEcon+"<br>"+
-				"playerEduc: "+playerEduc+"<br>"+
-				"educationIntent: "+educationIntent+"<br>"+
-				"localeIntent: "+localeIntent+"<br>"+
-				"industryIntent: "+industryIntent+"<br>"+
-				"playerJobName: "+playerJobName+"<br>"+
-				"playerSalary: "+playerSalary+"<br>"+
+			$('.content').html(
 				finaletext
 			).fadeIn(fadeDuration, bindcredits)
 		});
@@ -402,6 +407,8 @@ $(document).ready(function() {
 		$('html').off('click')
 		$('.content').fadeOut(fadeDuration, function() {
 		  $(this).html(creditstext).fadeIn(fadeDuration);
+		  $('html').on('click', function () {window.location.reload()});
 		});
+
 	}
 });
