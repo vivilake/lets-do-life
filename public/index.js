@@ -33,7 +33,7 @@ $(document).ready(function() {
 	var test = getQueryVariable('test');
 
 	var ethnicityArray = ["White", "Black", "Hispanic"]
-	var genderArray = ["Male", "Female", "Trans Male", "Trans Female", "Nonbinary"]
+	var genderArray = ["Man", "Woman", "Trans Man", "Trans Woman", "Nonbinary Person"]
 	var economicArray = ["Poverty Line", "Working Class", "Middle Class", "Wealthy"]
 
 	var playerEthnicity = ethnicityArray[Math.floor(Math.random() * ethnicityArray.length)];
@@ -262,13 +262,13 @@ $(document).ready(function() {
 
 	var logotext = '<img src="logo.png" class="logo" />'
 
-	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br>At least, that\'s what people say.<br>Let\'s take their word for it, just this once.<br>It\'s pretty tough to get into school these days.<br>But I think you\'ve got what it takes.<br>So what kind of education are you looking for?<br><br>'+
-		'<div class="optionitem">Get your <span data-education="High School" class="hightext decision2">high school diploma</span>.</div><div class="optionitem">Acquire your <span data-education="Associates" class="hightext decision2">Associates degree.</span></div><div class="optionitem">Go for your <span data-education="Bachelors" class="hightext decision2">Bachelors</span> at a university.</div>';
+	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br> At least, that\'s what people say. Let\'s take their word for it, just this once.<br> It\'s pretty tough to get into school these days. But I think <strong>you\'ve got what it takes</strong>.<br>So what kind of education are you looking for?<br><br>'+
+		'<div class="optionitem">Get your <span data-education="High School" class="hightext decision2">high school diploma</span>.</div><div class="optionitem">Acquire your <span data-education="Associates" class="hightext decision2">Associates degree.</span></div><div class="optionitem">Go for your <span data-education="Bachelor\'s" class="hightext decision2">Bachelor\'s</span> at a university.</div>';
 
 	var decision2text = 'Not only is getting into school tough, but so is getting an education.<br>But you know what, <strong>life isn\'t just about studying.</strong><br>It\'s also about, well, living!<br>So where would you want to <strong>live?</strong><br><br>'+
 		'<div class="optionitem">In the middle of a bustling <span data-locale="City" class="hightext decision3">city.</span></div><div class="optionitem">In a <span data-locale="Suburban" class="hightext decision3">quiet neighborhood.</span></div><div class="optionitem">Out in the <span data-locale="Rural" class="hightext decision3">country</span>, close to nature.</div>';
 
-	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll <strong>never work a day of your life!</strong><br>So what would you <strong>love</strong> to do?<br><br>'+
+	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>But they say that, if you love what you do, you\'ll <strong>never work a day in your life!</strong><br>So what would you <strong>love</strong> to do?<br><br>'+
 		'<div class="optionitem">Help others in the <span data-industry="Medicine" class="hightext finale">medical</span> profession.</div><div class="optionitem">Solve the world\'s problems as an <span data-industry="Engineering and Technology" class="hightext finale">engineer or developer.</span></div><div class="optionitem">Connect with others as a <span data-industry="Business" class="hightext finale">businessperson.</span></div><div class="optionitem">Make people think in a <span data-industry="Creative" class="hightext finale">creative</span> profession.</div>';
 
 	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey<br><br>Play Again?'
@@ -282,7 +282,7 @@ $(document).ready(function() {
 		'Maybe sometimes those odds are stacked too high.<br>';
 	}
 
-	var ethClasstext = 'You were born '+playerEthnicity+' into a '+ playerEcon +' home.<br>';
+	var ethClasstext = 'You were born <span class="hightext">'+playerEthnicity+'</span> into a <span class="hightext">'+ playerEcon +'</span> home.<br>';
 
 	var wealthtext = '';
 	if (playerEcon == "Wealthy") {
@@ -291,13 +291,13 @@ $(document).ready(function() {
 		wealthtext = 'Your family often had to make sacrifices, some of which kept you from taking advantage of opportunities that might have helped you grow.<br>';
 	}
 
-	var didbesttext = 'Even though school could be challenging, you did your best.<br>In the end, that\'s all anyone can do.<br>';
+	var didbesttext = '<br>Even though school could be challenging, you did your best. In the end, that\'s all anyone can do. ';
 
 	var eductext = ''
 	if (playerEduc == "Dropout") {
 		eductext = 'Life got in the way before you could finish high school. Your family went through severe financial setbacks, and you made sacrifices to help out.<br>';
 	} else {
-		eductext = 'You graduated high school and achieved '+playerEduc+' degree.<br>';
+		eductext = 'You graduated high school and achieved <span class="hightext">'+playerEduc+'</span> degree.<br>';
 	}
 
 	var finaletext = null;
@@ -371,14 +371,21 @@ $(document).ready(function() {
 		industryIntent = $(this).data('industry');
 		playerJobName = myJob(industryIntent, playerEduc).name;
 		playerSalary = myJob(industryIntent, playerEduc).salary;
-		var jobtext = 'You managed to get a job in '+industryIntent+' as '+playerJobName+'.<br>';
-		var salarytext = 'Your estimated earnings are '+playerSalary+' per year.<br>';
-		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext;
+		var jobtext = 'You managed to get a job in <span class="hightext">'+industryIntent+'</span> as <span class="hightext">'+playerJobName+'.</span><br>';
+		var salarytext = 'Your estimated earnings are <span class="hightext">'+playerSalary+'</span> per year.<br>';
+
+		if (playerEthnicity != "White" && playerGender != "Man") {
+			compskewtext = 'Your salary may have been skewed due to your demographic. As a <span class="hightext">'+playerEthnicity+'</span> <span class="hightext">'+playerGender+'</span>, the starting salary you are offered is often lower and negotiating compensation can be difficult.';
+		} else {
+			compskewtext = '';
+		}
+
+		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext+compskewtext;
 
 		var bindcredits = function () {
 			$('html').on('click', credits)
 			if (test == "true") {
-				$('.content').append("Your Ethnicity is: "+playerEthnicity+"<br>"+
+				$('.content').append("<br><br>Your Ethnicity is: "+playerEthnicity+"<br>"+
 					"Your Gender is: "+playerGender+"<br>"+
 					"ethEconRoll: "+ethEconRoll+"<br>"+
 					"ethEducRoll: "+ethEducRoll+"<br>"+
