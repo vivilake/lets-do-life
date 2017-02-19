@@ -15,7 +15,8 @@ $(document).ready(function() {
 	    'decision3.jpg',
 	    'logo.png',
 	    'intro-bg.jpg',
-	    'logo-bg.jpg'
+	    'logo-bg.jpg',
+	    'clearcredits.png'
 	]);
 
 	function getQueryVariable(variable) {
@@ -273,6 +274,8 @@ $(document).ready(function() {
 
 	var creditstext = '<span class="statictext">Masha</span>: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br><span class="statictext">Sara</span>: Narrative Design, UI Design, & Motivational Consulting<br><span class="statictext">Lauren</span>: Research, Data Modeling, & Design<br><span class="statictext">Gloriane</span>: Concept & Background Art<br><span class="statictext">Silvia</span>: Additional Art<br><span class="statictext">Vivian</span>: Code Monkey<br><br>Play Again?'
 
+	var creditstext = '<img src="clearcredits.png" height="60%" class="logo" />'
+
 	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
 
 	var goalstext = '';
@@ -413,6 +416,9 @@ $(document).ready(function() {
 	function credits() {
 		$('html').off('click')
 		$('.content').fadeOut(fadeDuration, function() {
+			$('.content').css({
+				'background' : 'none',
+			});
 		  $(this).html(creditstext).fadeIn(fadeDuration);
 		  $('html').on('click', function () {window.location.reload()});
 		});
