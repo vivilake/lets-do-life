@@ -1,4 +1,21 @@
 $(document).ready(function() {
+	function preload(arrayOfImages) {
+	    $(arrayOfImages).each(function(){
+	        $('<img/>')[0].src = this;
+	        // Alternatively you could use:
+	        // (new Image()).src = this;
+	    });
+	}
+
+	// Usage:
+
+	preload([
+	    'decision1.jpg',
+	    'decision2.jpg',
+	    'decision3.jpg',
+	    'logo.png'
+	]);
+
 	var ethnicityArray = ["White", "Black", "Hispanic"]
 	var genderArray = ["Male", "Female", "Trans Male", "Trans Female", "Nonbinary"]
 	var economicArray = ["Poverty Line", "Working Class", "Middle Class", "Wealthy"]
@@ -268,7 +285,7 @@ $(document).ready(function() {
 	if (playerEduc == "Dropout") {
 		eductext = 'Life got in the way before you could finish high school. Your family went through severe financial setbacks, and you made sacrifices to help out.<br>';
 	} else {
-		eductext = 'You graduated high school and achieved a '+playerEduc+'.<br>';
+		eductext = 'You graduated high school and achieved '+playerEduc+' degree.<br>';
 	}
 
 	var finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext;
