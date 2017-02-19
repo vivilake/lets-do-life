@@ -12,23 +12,6 @@
   "keywords": [
     "node.js"
   ],
-  "contributors": [
-    {
-      "name": "Masha Lepire",
-    },
-    {
-      "name": "Lauren Careccia",
-    },
-    {
-      "name": "Sara Rose",
-    },
-    {
-      "name": "Gloriane Chyng Yu",
-    },
-    {
-      "name": "Vivian Su",
-    }
-  ],
   "repositories": [
     {
       "type": "git",
