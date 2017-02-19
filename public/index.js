@@ -271,7 +271,7 @@ $(document).ready(function() {
 	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>But they say that, if you love what you do, you\'ll <strong>never work a day in your life!</strong><br><br>So what would you <strong>love</strong> to do?<br>'+
 		'<div class="optionitem">Help others in the <span data-industry="Medicine" class="hightext finale">medical</span> profession.</div><div class="optionitem">Solve the world\'s problems as an <span data-industry="Engineering and Technology" class="hightext finale">engineer or developer.</span></div><div class="optionitem">Connect with others as a <span data-industry="Business" class="hightext finale">businessperson.</span></div><div class="optionitem">Make people think in a <span data-industry="Creative" class="hightext finale">creative</span> profession.</div>';
 
-	var creditstext = '<span class="hightext">Masha</span>: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br><span class="hightext">Sara</span>: Narrative Design, UI Design, & Motivational Consulting<br><span class="hightext">Lauren</span>: Research, Data Modeling, & Design<br><span class="hightext">Gloriane</span>: Concept & Background Art<br><span class="hightext">Vivian</span>: Code Monkey<br><br>Play Again?'
+	var creditstext = '<span class="statictext">Masha</span>: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br><span class="statictext">Sara</span>: Narrative Design, UI Design, & Motivational Consulting<br><span class="statictext">Lauren</span>: Research, Data Modeling, & Design<br><span class="statictext">Gloriane</span>: Concept & Background Art<br><span class="statictext">Vivian</span>: Code Monkey<br><br>Play Again?'
 
 	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
 
@@ -282,7 +282,7 @@ $(document).ready(function() {
 		'Maybe sometimes those odds are stacked too high.<br>';
 	}
 
-	var ethClasstext = 'You were born <span class="hightext">'+playerEthnicity+'</span> into a <span class="hightext">'+ playerEcon +'</span> home.<br>';
+	var ethClasstext = 'You were born <span class="statictext">'+playerEthnicity+'</span> into a <span class="statictext">'+ playerEcon +'</span> home.<br>';
 
 	var wealthtext = '';
 	if (playerEcon == "Wealthy") {
@@ -297,7 +297,7 @@ $(document).ready(function() {
 	if (playerEduc == "Dropout") {
 		eductext = 'Life got in the way before you could finish high school. Your family went through severe financial setbacks, and you made sacrifices to help out.<br>';
 	} else {
-		eductext = 'You graduated high school and achieved <span class="hightext">'+playerEduc+'</span> degree.<br>';
+		eductext = 'You graduated high school and achieved <span class="statictext">'+playerEduc+'</span> degree.<br>';
 	}
 
 	var finaletext = null;
@@ -371,11 +371,11 @@ $(document).ready(function() {
 		industryIntent = $(this).data('industry');
 		playerJobName = myJob(industryIntent, playerEduc).name;
 		playerSalary = myJob(industryIntent, playerEduc).salary;
-		var jobtext = 'You managed to get a job in <span class="hightext">'+industryIntent+'</span> as <span class="hightext">'+playerJobName+'.</span><br>';
-		var salarytext = 'Your estimated earnings are <span class="hightext">'+playerSalary+'</span> per year.<br>';
+		var jobtext = 'You managed to get a job in <span class="statictext">'+industryIntent+'</span> as <span class="statictext">'+playerJobName+'.</span><br>';
+		var salarytext = 'Your estimated earnings are <span class="statictext">'+playerSalary+'</span> per year.<br>';
 
 		if (playerEthnicity != "White" && playerGender != "Man") {
-			compskewtext = 'Your salary may have been skewed due to your demographic. As a <span class="hightext">'+playerEthnicity+'</span> <span class="hightext">'+playerGender+'</span>, the starting salary you are offered is often lower and negotiating compensation can be difficult.';
+			compskewtext = 'Your salary may have been skewed due to your demographic. As a <span class="statictext">'+playerEthnicity+'</span> <span class="statictext">'+playerGender+'</span>, the starting salary you are offered is often lower and negotiating compensation can be difficult.';
 		} else {
 			compskewtext = '';
 		}

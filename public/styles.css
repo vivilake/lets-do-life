@@ -26,3 +26,8 @@
 	text-shadow: 0 0 15px #CCC3BF;
 	cursor: crosshair;
 }
+
+.statictext {
+    color: #6c698f;
+    font-weight: bold;
+}
