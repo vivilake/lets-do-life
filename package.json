@@ -1,0 +1,38 @@
+{
+  "name": "lets-do-life",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.1.0",
+    "jquery": "3.1.1"
+  },
+  "engines": {
+    "node": "0.8.19",
+    "npm": "1.2.10"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "contributors": [
+    {
+      "name": "Masha Lepire",
+    },
+    {
+      "name": "Lauren Careccia",
+    },
+    {
+      "name": "Sara Rose",
+    },
+    {
+      "name": "Gloriane Chyng Yu",
+    },
+    {
+      "name": "Vivian Su",
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:vivilake/lets-do-life.git"
+    }
+  ]
+}
