@@ -256,20 +256,20 @@ $(document).ready(function() {
 	$('html').css({
 		'background-image' : 'url(intro-bg.jpg)',
 	});
-	$('.content').html("Let's talk for a moment.<br>The world is a big, complicated, and scary place...<br>But it's not all bad!<br>After all, you're here. You're a hard worker. You can do this.<br>I believe in you.<br>So much that I'm going to help you.<br>We're going to go through life together.<br>So let's do it. Let's go!<br>");
+	$('.content').html("<strong>Let's talk</strong> for a moment.<br>The world is a big, complicated, and <strong>scary</strong> place...<br><strong>But it's not all bad!</strong><br>After all, you're here. You're a hard worker. <strong>You can do this</strong>.<br>I <strong>believe</strong> in you.<br>So much that <strong>I'm going to help you.</strong><br>We're going to go through life <strong>together</strong>.<br>So let's do it. <strong>Let's go!</strong><br>");
 
 	$('html').on('click', logoScreen)
 
 	var logotext = '<img src="logo.png" class="logo" />'
 
-	var decision1text = 'You can\'t get anywhere in life without a good education.<br>At least, that\'s what people say.<br>Let\'s take their word for it, just this once.<br>It\'s pretty tough to get into school these days.<br>But I think you\'ve got what it takes.<br>So what kind of education are you looking for?<br><span>Select One</span><br>'+
-		'<div data-education="High School" class="optionitem decision2">High School</div><div data-education="Associates" class="optionitem decision2">Associates</div><div data-education="Bachelors" class="optionitem decision2">Bachelors</div>';
+	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br>At least, that\'s what people say.<br>Let\'s take their word for it, just this once.<br>It\'s pretty tough to get into school these days.<br>But I think you\'ve got what it takes.<br><br>So what kind of education are you looking for?<br><br>'+
+		'<div data-education="High School" class="optionitem decision2">Get your <span class="hightext">high school diploma</span>.</div><div data-education="Associates" class="optionitem decision2">Acquire your <span class="hightext">Associates degree</span></div><div data-education="Bachelors" class="optionitem decision2">Go for your Bachelors at a <span class="hightext">university</span></div>';
 
-	var decision2text = 'Not only is getting into school tough, but so is getting an education.<br>But you know what, life isn\'t just about studying.<br>It\'s also about, well, living!<br>So where would you want to live?<br><span>Select One</span><br>'+
-		'<div data-locale="City" class="optionitem decision3">City</div><div data-locale="Suburban" class="optionitem decision3">Suburban</div><div data-locale="Rural" class="optionitem decision3">Rural</div>';
+	var decision2text = 'Not only is getting into school tough, but so is getting an education.<br>But you know what, <strong>life isn\'t just about studying.</strong><br>It\'s also about, well, living!<br>So where would you want to <strong>live?</strong><br><span>Select One</span><br>'+
+		'<div data-locale="City" class="optionitem decision3">In the middle of a bustling <span class="hightext">city.</span></div><div data-locale="Suburban" class="optionitem decision3">In a <span class="hightext">quiet neighborhood</span></div><div data-locale="Rural" class="optionitem decision3">Out in the <span class="hightext">country</span>, close to nature.</div>';
 
-	var decision3text = 'The scariest thing about living in a new place is worrying about money.<br>So it\'s important to use that education to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll never work a day of your life!<br>So what would you love to do?<br><span>Select One</span><br>'+
-		'<div data-industry="Medicine" class="optionitem finale">Medicine</div><div data-industry="Engineering and Technology" class="optionitem finale">Engineering and Technology</div><div data-industry="Business" class="optionitem finale">Business</div><div data-industry="Creative" class="optionitem finale">Creative</div>';
+	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll <strong>never work a day of your life!</strong><br>So what would you <strong>love</strong> to do?<br><span>Select One</span><br>'+
+		'<div data-industry="Medicine" class="optionitem finale">Help others in the <span class="hightext">medical</span> profession.</div><div data-industry="Engineering and Technology" class="optionitem finale">Solve the world’s problems as an <span class="hightext">engineer or developer.</span></div><div data-industry="Business" class="optionitem finale">Connect with others as a <span class="hightext">businessperson.</span></div><div data-industry="Creative" class="optionitem finale">Make people think in a <span class="hightext">creative</span> profession.</div>';
 
 	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey<br><br>Play Again?'
 
