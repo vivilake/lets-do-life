@@ -137,7 +137,10 @@ $(document).ready(function() {
 		}
 		$('html').off('click');
 		$('.content').fadeOut(fadeDuration, function() {
-			$('.content').css({'background':'none'});
+			$('.content').css({
+				'background':'none',
+				'text-align':'center'
+			});
 		 	$(this).html(logotext).fadeIn(fadeDuration, bindd1);
 		});
 	}
@@ -149,7 +152,10 @@ $(document).ready(function() {
 		}
 		$('html').off('click');
 		$('.content').fadeOut(fadeDuration, function() {
-			$('.content').css({'background' : 'rgba(255,255,255,0.7)'});
+			$('.content').css({
+				'background' : 'rgba(255,255,255,0.7)',
+				'text-align':'left'
+			});
 			$('html').css({
 			   'background-image' : 'url(decision1.jpg)',
 			   'background-size' : 'cover'
