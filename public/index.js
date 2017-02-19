@@ -13,7 +13,9 @@ $(document).ready(function() {
 	    'decision1.jpg',
 	    'decision2.jpg',
 	    'decision3.jpg',
-	    'logo.png'
+	    'logo.png',
+	    'intro-bg.jpg',
+	    'logo-bg.jpg'
 	]);
 
 	var ethnicityArray = ["White", "Black", "Hispanic"]
@@ -243,9 +245,9 @@ $(document).ready(function() {
 	console.log(playerEcon)
 	*/
 
-  $('html').css({
-   	'background-color' : 'rgba(113, 66, 20, 1)',
-   });
+	$('html').css({
+		'background-image' : 'url(intro-bg.jpg)',
+	});
 	$('.content').html("Let's talk for a moment.<br>The world is a big, complicated, and scary place...<br>But it's not all bad!<br>After all, you're here. You're a hard worker. You can do this.<br>I believe in you.<br>So much that I'm going to help you.<br>We're going to go through life together.<br>So let's do it. Let's go!<br>");
 
 	$('html').on('click', logoScreen)
@@ -302,6 +304,9 @@ $(document).ready(function() {
 			$('html').on('click', decision1)
 		}
 		$('html').off('click');
+		$('html').css({
+			'background-image' : 'url(logo-bg.jpg)',
+		});
 		$('.content').fadeOut(fadeDuration, function() {
 			$('.content').css({
 				'background':'none',
