@@ -262,16 +262,16 @@ $(document).ready(function() {
 
 	var logotext = '<img src="logo.png" class="logo" />'
 
-	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br> At least, that\'s what people say. Let\'s take their word for it, just this once.<br> It\'s pretty tough to get into school these days. But I think <strong>you\'ve got what it takes</strong>.<br>So what kind of education are you looking for?<br><br>'+
+	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br> At least, that\'s what people say. Let\'s take their word for it, just this once.<br> It\'s pretty tough to get into school these days. But I think <strong>you\'ve got what it takes</strong>.<br><br>So what kind of <strong>education</strong> are you looking for?<br>'+
 		'<div class="optionitem">Get your <span data-education="High School" class="hightext decision2">high school diploma</span>.</div><div class="optionitem">Acquire your <span data-education="Associates" class="hightext decision2">Associates degree.</span></div><div class="optionitem">Go for your <span data-education="Bachelor\'s" class="hightext decision2">Bachelor\'s</span> at a university.</div>';
 
-	var decision2text = 'Not only is getting into school tough, but so is getting an education.<br>But you know what, <strong>life isn\'t just about studying.</strong><br>It\'s also about, well, living!<br>So where would you want to <strong>live?</strong><br><br>'+
+	var decision2text = 'Not only is getting into school tough, but so is getting an education.<br>But you know what, <strong>life isn\'t just about studying.</strong><br>It\'s also about, well, living!<br><br>So where would you want to <strong>live?</strong><br>'+
 		'<div class="optionitem">In the middle of a bustling <span data-locale="City" class="hightext decision3">city.</span></div><div class="optionitem">In a <span data-locale="Suburban" class="hightext decision3">quiet neighborhood.</span></div><div class="optionitem">Out in the <span data-locale="Rural" class="hightext decision3">country</span>, close to nature.</div>';
 
-	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>But they say that, if you love what you do, you\'ll <strong>never work a day in your life!</strong><br>So what would you <strong>love</strong> to do?<br><br>'+
+	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>But they say that, if you love what you do, you\'ll <strong>never work a day in your life!</strong><br><br>So what would you <strong>love</strong> to do?<br>'+
 		'<div class="optionitem">Help others in the <span data-industry="Medicine" class="hightext finale">medical</span> profession.</div><div class="optionitem">Solve the world\'s problems as an <span data-industry="Engineering and Technology" class="hightext finale">engineer or developer.</span></div><div class="optionitem">Connect with others as a <span data-industry="Business" class="hightext finale">businessperson.</span></div><div class="optionitem">Make people think in a <span data-industry="Creative" class="hightext finale">creative</span> profession.</div>';
 
-	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey<br><br>Play Again?'
+	var creditstext = '<span class="hightext">Masha</span>: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br><span class="hightext">Sara</span>: Narrative Design, UI Design, & Motivational Consulting<br><span class="hightext">Lauren</span>: Research, Data Modeling, & Design<br><span class="hightext">Gloriane</span>: Concept & Background Art<br><span class="hightext">Vivian</span>: Code Monkey<br><br>Play Again?'
 
 	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
 
@@ -416,6 +416,5 @@ $(document).ready(function() {
 		  $(this).html(creditstext).fadeIn(fadeDuration);
 		  $('html').on('click', function () {window.location.reload()});
 		});
-
 	}
 });
