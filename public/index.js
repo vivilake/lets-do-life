@@ -6,7 +6,8 @@ $(document).ready(function() {
 	var playerEthnicity = ethnicityArray[Math.floor(Math.random() * ethnicityArray.length)];
 	var playerGender = genderArray[Math.floor(Math.random() * genderArray.length)];
 
-	var ethEconRoll = Math.floor(Math.random() * 100) + 1
+	var ethEconRoll = Math.floor(Math.random() * 100) + 1;
+	var ethEducRoll = Math.floor(Math.random() * 100) + 1;
 
 	getWhiteEcon = function(x) {
 		if(x<=19) {
@@ -15,7 +16,7 @@ $(document).ready(function() {
 			return "Working Class"
 		} else if (x>40 && x<=92) {
 			return "Middle Class"
-		}else {
+		} else {
 			return "Wealthy"
 		}
 	};
@@ -64,6 +65,22 @@ $(document).ready(function() {
 	// EDUCATION //
 	///////////////
 
+	myEduc = function (ethnicity) {
+		var ret = ""
+		switch (ethnicity) {
+		  case "White":
+		    ret = getWhiteEduc(ethEducRoll);
+		    break;
+		  case "Black":
+		    ret = getBlackEduc(ethEducRoll);
+		    break;
+		  case "Hispanic":
+		    ret = getHispanicEduc(ethEducRoll);
+		    break;
+		}
+		return ret;
+	}
+
 	getWhiteEduc = function(x) {
 		if(x<=7) {
 			return "Dropout"
@@ -100,7 +117,105 @@ $(document).ready(function() {
 		}
 	};
 
+	///////////////
+	/// Career ////
+	///////////////
+
+	myJob = function (industry, education) {
+		var ret = ""
+		switch (industry) {
+		  case "Medicine":
+		    ret = getMedicineJob(education);
+		    break;
+		  case "Business":
+		    ret = getBusinessJob(education);
+		    break;
+		  case "Engineering and Technology":
+		    ret = getTechJob(education);
+		    break;
+		  case "Creative":
+		    ret = getCreativeJob(education);
+		    break;
+		}
+		return ret;
+	}
+
+	getMedicineJob = function(edu) {
+		var ret = ""
+		switch (edu) {
+		  case "Dropout":
+		    ret = {'name': 'Janitor', 'salary': 23400}
+		    break;
+		  case "High School":
+		    ret = {'name': 'Personal Care Aid', 'salary': 20100}
+		    break;
+		  case "Associates":
+		    ret = {'name': 'Dental Hygienist', 'salary': 34900}
+		    break;
+		  case "Bachelors":
+			ret = {'name': 'Registered Nurse', 'salary': 67490}
+		}
+		return ret;
+	};
+
+	getBusinessJob = function(edu) {
+		var ret = ""
+		switch (edu) {
+		  case "Dropout":
+		    ret = {'name': 'Cashier', 'salary': 19310}
+		    break;
+		  case "High School":
+		    ret = {'name': 'Store Manager', 'salary': 54807}
+		    break;
+		  case "Associates":
+		    ret = {'name': 'Executive Assistant', 'salary': 60989}
+		    break;
+		  case "Bachelors":
+		  	ret = {'name': 'Management Analyst', 'salary': 72000}
+		}
+		return ret;
+	};
+
+	getTechJob = function(edu) {
+		var ret = ""
+		switch (edu) {
+		  case "Dropout":
+		    ret = {'name': 'Construction Worker', 'salary': 30890}
+		    break;
+		  case "High School":
+		    ret = {'name': 'Subway Car Operator', 'salary': 60580}
+		    break;
+		  case "Associates":
+		    ret = {'name': 'IT Support Specialist', 'salary': 45464}
+		    break;
+		  case "Bachelors":
+		  	ret = {'name': 'Computer Programmer', 'salary': 79530}
+		}
+		return ret;
+	};
+
+	getCreativeJob = function(edu) {
+		var ret = ""
+		switch (edu) {
+		  case "Dropout":
+		    ret = {'name': 'Photographer', 'salary': 31710}
+		    break;
+		  case "High School":
+		    ret = {'name': 'Film Production Assistant', 'salary': 29549}
+		    break;
+		  case "Associates":
+		    ret = {'name': 'Fashion Designer', 'salary': 49000}
+		    break;
+		  case "Bachelors":
+		  	ret = {'name': 'Video Game Producer', 'salary': 70485}
+		}
+		return ret;
+	};
+
 	var playerEcon = myEcon(playerEthnicity);
+	var playerEduc = myEduc(playerEthnicity);
+	var playerJobName = null;
+	var playerSalary = null;
 	var educationIntent = null;
 	var localeIntent = null;
 	var industryIntent = null;
@@ -127,7 +242,41 @@ $(document).ready(function() {
 		'<div data-locale="City" class="optionitem decision3">City</div><div data-locale="Suburban" class="optionitem decision3">Suburban</div><div data-locale="Rural" class="optionitem decision3">Rural</div>';
 
 	var decision3text = 'The scariest thing about living in a new place is worrying about money.<br>So it\'s important to use that education to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll never work a day of your life!<br>So what would you love to do?<br><span>Select One</span><br>'+
-		'<div data-industry="Medicine" class="optionitem finale">Medicine</div><div data-industry="Technology" class="optionitem finale">Technology</div><div data-industry="Business" class="optionitem finale">Business</div><div data-industry="Creative" class="optionitem finale">Creative</div>';
+		'<div data-industry="Medicine" class="optionitem finale">Medicine</div><div data-industry="Engineering and Technology" class="optionitem finale">Engineering and Technology</div><div data-industry="Business" class="optionitem finale">Business</div><div data-industry="Creative" class="optionitem finale">Creative</div>';
+
+	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
+
+	var goalstext = '';
+	if (educationIntent == playerEduc) {
+		goalstext = 'Hard work, circumstance, and luck helped keep you on track.<br>';
+	} else {
+		'Maybe sometimes those odds are stacked too high.<br>';
+	}
+
+	var ethClasstext = 'You were born '+playerEthnicity+' into a '+ playerEcon +' home.<br>';
+
+	var wealthtext = '';
+	if (playerEcon == "Wealthy") {
+		wealthtext = 'There were a lot of opportunities for you to try new things and explore, and there was lots of room for error.<br>';
+	} else {
+		wealthtext = 'Your family often had to make sacrifices, some of which kept you from taking advantage of opportunities that might have helped you grow.<br>';
+	}
+
+	var didbesttext = 'Even though school could be challenging, you did your best. In the end, that\'s all anyone can do.<br>';
+
+	var eductext = ''
+	if (playerEduc == "Dropout") {
+		eductext = 'Life got in the way before you could finish high school. Your family went through severe financial setbacks, and you made sacrifices to help out.<br>';
+	} else {
+		eductext = 'You graduated high school and achieved a '+playerEduc+'.<br>';
+	}
+
+	var finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext;
+	console.log("XXXXXX");
+	console.log(finaletext);
+	console.log(toughtext)
+
+
 
 	var fadeDuration = 1200;
 
@@ -197,13 +346,20 @@ $(document).ready(function() {
 
 	function finale() {
 		industryIntent = $(this).data('industry');
-		console.log(industryIntent)
+		console.log(finaletext)
+		playerJobName = myJob(industryIntent, playerEduc).name;
+		playerSalary = myJob(industryIntent, playerEduc).salary;;
 		$('.content').html("Your Ethnicity is: "+playerEthnicity+"<br>")
 		$('.content').append("Your Gender is: "+playerGender+"<br>")
 		$('.content').append("ethEconRoll: "+ethEconRoll+"<br>")
+		$('.content').append("ethEducRoll: "+ethEducRoll+"<br>")
 		$('.content').append("playerEcon: "+playerEcon+"<br>")
+		$('.content').append("playerEduc: "+playerEduc+"<br>")
 		$('.content').append("educationIntent: "+educationIntent+"<br>")
 		$('.content').append("localeIntent: "+localeIntent+"<br>")
 		$('.content').append("industryIntent: "+industryIntent+"<br>")
+		$('.content').append("playerJobName: "+playerJobName+"<br>")
+		$('.content').append("playerSalary: "+playerSalary+"<br>")
+		$('.content').append(finaletext)
 	}
 });
