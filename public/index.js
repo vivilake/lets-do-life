@@ -263,6 +263,8 @@ $(document).ready(function() {
 	var decision3text = 'The scariest thing about living in a new place is worrying about money.<br>So it\'s important to use that education to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>That gave me the chills.<br>But they say that, if you love what you do, you\'ll never work a day of your life!<br>So what would you love to do?<br><span>Select One</span><br>'+
 		'<div data-industry="Medicine" class="optionitem finale">Medicine</div><div data-industry="Engineering and Technology" class="optionitem finale">Engineering and Technology</div><div data-industry="Business" class="optionitem finale">Business</div><div data-industry="Creative" class="optionitem finale">Creative</div>';
 
+	var creditstext = 'Masha: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br>Sara: Narrative Design, UI Design, & Motivational Consulting<br>Lauren: Research, Data Modeling, & Design<br>Gloriane: Concept & Background Art<br>Vivian: Code Monkey'
+
 	var toughtext = 'Moving forward can be tough, especially when the odds are stacked against you.<br>';
 
 	var goalstext = '';
@@ -371,17 +373,35 @@ $(document).ready(function() {
 		console.log(finaletext)
 		playerJobName = myJob(industryIntent, playerEduc).name;
 		playerSalary = myJob(industryIntent, playerEduc).salary;;
-		$('.content').html("Your Ethnicity is: "+playerEthnicity+"<br>")
-		$('.content').append("Your Gender is: "+playerGender+"<br>")
-		$('.content').append("ethEconRoll: "+ethEconRoll+"<br>")
-		$('.content').append("ethEducRoll: "+ethEducRoll+"<br>")
-		$('.content').append("playerEcon: "+playerEcon+"<br>")
-		$('.content').append("playerEduc: "+playerEduc+"<br>")
-		$('.content').append("educationIntent: "+educationIntent+"<br>")
-		$('.content').append("localeIntent: "+localeIntent+"<br>")
-		$('.content').append("industryIntent: "+industryIntent+"<br>")
-		$('.content').append("playerJobName: "+playerJobName+"<br>")
-		$('.content').append("playerSalary: "+playerSalary+"<br>")
-		$('.content').append(finaletext)
+
+		var bindcredits = function () {
+			$('html').on('click', credits)
+		}
+		$('.content').fadeOut(fadeDuration, function() {
+		  $('html').css({
+			   'background-image' : 'url(intro-bg.jpg)',
+			   'background-size' : 'cover'
+			});
+			$('.content').html("Your Ethnicity is: "+playerEthnicity+"<br>"+
+				"Your Gender is: "+playerGender+"<br>"+
+				"ethEconRoll: "+ethEconRoll+"<br>"+
+				"ethEducRoll: "+ethEducRoll+"<br>"+
+				"playerEcon: "+playerEcon+"<br>"+
+				"playerEduc: "+playerEduc+"<br>"+
+				"educationIntent: "+educationIntent+"<br>"+
+				"localeIntent: "+localeIntent+"<br>"+
+				"industryIntent: "+industryIntent+"<br>"+
+				"playerJobName: "+playerJobName+"<br>"+
+				"playerSalary: "+playerSalary+"<br>"+
+				finaletext
+			).fadeIn(fadeDuration, bindcredits)
+		});
+	}
+
+	function credits() {
+		$('html').off('click')
+		$('.content').fadeOut(fadeDuration, function() {
+		  $(this).html(creditstext).fadeIn(fadeDuration);
+		});
 	}
 });
