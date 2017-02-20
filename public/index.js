@@ -16,7 +16,8 @@ $(document).ready(function() {
 	    'logo.png',
 	    'intro-bg.jpg',
 	    'logo-bg.jpg',
-	    'clearcredits.png'
+	    'clearcredits.png',
+	    'people.png'
 	]);
 
 	function getQueryVariable(variable) {
