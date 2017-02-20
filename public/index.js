@@ -261,7 +261,7 @@ $(document).ready(function() {
 
 	$('html').on('click', logoScreen)
 
-	var logotext = '<img src="logo.png" class="logo" />'
+	var logotext = '<img src="logo.png" class="logo" />';
 
 	var decision1text = 'You can\'t get anywhere in life <strong>without a good education.</strong><br> At least, that\'s what people say. Let\'s take their word for it, just this once.<br> It\'s pretty tough to get into school these days. But I think <strong>you\'ve got what it takes</strong>.<br><br>So what kind of <strong>education</strong> are you looking for?<br>'+
 		'<div class="optionitem">Get your <span data-education="High School" class="hightext decision2">high school diploma</span>.</div><div class="optionitem">Acquire your <span data-education="Associates" class="hightext decision2">Associates degree.</span></div><div class="optionitem">Go for your <span data-education="Bachelor\'s" class="hightext decision2">Bachelor\'s</span> at a university.</div>';
@@ -272,7 +272,19 @@ $(document).ready(function() {
 	var decision3text = 'The <strong>scariest</strong> thing about living in a new place is worrying about money.<br>So <strong>it\'s important to use that education</strong> to get a job.<br>Most people spend a whole lot of time at work. Maybe even half their lives...<br>But they say that, if you love what you do, you\'ll <strong>never work a day in your life!</strong><br><br>So what would you <strong>love</strong> to do?<br>'+
 		'<div class="optionitem">Help others in the <span data-industry="Medicine" class="hightext finale">medical</span> profession.</div><div class="optionitem">Solve the world\'s problems as an <span data-industry="Engineering and Technology" class="hightext finale">engineer or developer.</span></div><div class="optionitem">Connect with others as a <span data-industry="Business" class="hightext finale">businessperson.</span></div><div class="optionitem">Make people think in a <span data-industry="Creative" class="hightext finale">creative</span> profession.</div>';
 
+	var sourcestext = '<strong>Sources and Data: </strong><br>'+
+		'<a href="http://bit.ly/XUzUSi">Wage Gap Data</a><br>'+
+		'<a href="http://bit.ly/2a0PpiN">Poverty Rates by Race</a><br>'+
+		'<a href="http://bit.ly/1U7v78r">Education Statistics for Black Women</a><br>'+
+		'<a href="http://kaiserf.am/2j79CuD">Population Distribution By Gender</a><br>'+
+		'<a href="http://bit.ly/2kNtI9I">Native American Demographic Information</a><br>'+
+		'<a href="http://bit.ly/2kWP9q5">Population Distribution By Race</a><br>'+
+		'<a href="http://bit.ly/2laePSg">Income Distribution By Race (Table A-1)</a><br>'+
+		'<a href="http://bit.ly/1mwDCeT">LGBT Population Demographics</a>';
+
+	/*
 	var creditstext = '<span class="statictext">Masha</span>: Audio, Production/Team Management, Research, Powerpoint dev, & Design<br><span class="statictext">Sara</span>: Narrative Design, UI Design, & Motivational Consulting<br><span class="statictext">Lauren</span>: Research, Data Modeling, & Design<br><span class="statictext">Gloriane</span>: Concept & Background Art<br><span class="statictext">Silvia</span>: Additional Art<br><span class="statictext">Vivian</span>: Code Monkey<br><br>Play Again?'
+	*/
 
 	var creditstext = '<img src="clearcredits.png" height="60%" class="logo" />'
 
@@ -383,10 +395,12 @@ $(document).ready(function() {
 			compskewtext = '';
 		}
 
-		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext+compskewtext;
+		var peopletext = '<br><img src="people.png" height="35%"" text-align="center" class="logo" />'
 
-		var bindcredits = function () {
-			$('html').on('click', credits)
+		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext+compskewtext+peopletext;
+
+		var bindsources = function () {
+			$('html').on('click', sources)
 			if (test == "true") {
 				$('.content').append("<br><br>Your Ethnicity is: "+playerEthnicity+"<br>"+
 					"Your Gender is: "+playerGender+"<br>"+
@@ -403,12 +417,30 @@ $(document).ready(function() {
 			}
 		}
 		$('.content').fadeOut(fadeDuration, function() {
-		  $('html').css({
+			$('html').css({
 			   'background-image' : 'url(intro-bg.jpg)',
 			   'background-size' : 'cover'
 			});
+			$('.content').css({
+				'margin-top': '5%'
+			});
 			$('.content').html(
 				finaletext
+			).fadeIn(fadeDuration, bindsources)
+		});
+	}
+
+	function sources() {
+		$('html').off('click')
+		var bindcredits = function () {
+			$('html').on('click', credits)
+		}
+		$('.content').fadeOut(fadeDuration, function() {
+			$('.content').css({
+				'margin-top': '20%'
+			});
+			$('.content').html(
+				sourcestext
 			).fadeIn(fadeDuration, bindcredits)
 		});
 	}
