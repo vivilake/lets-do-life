@@ -318,7 +318,7 @@ $(document).ready(function() {
 
 	var finaletext = null;
 
-	var fadeDuration = 200;
+	var fadeDuration = 1200;
 
 	function logoScreen() {
 		var bindd1 = function () {
