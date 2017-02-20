@@ -387,10 +387,11 @@ $(document).ready(function() {
 		industryIntent = $(this).data('industry');
 		playerJobName = myJob(industryIntent, playerEduc).name;
 		playerSalary = myJob(industryIntent, playerEduc).salary;
+		var locationtext = 'You found a home in a <span class="statictext">'+localeIntent+'</span> area.<br>';
 		var jobtext = 'You managed to get a job in <span class="statictext">'+industryIntent+'</span> as <span class="statictext">'+playerJobName+'.</span><br>';
 		var salarytext = 'Your estimated earnings are <span class="statictext">'+playerSalary+'</span> per year.<br>';
 
-		if (playerEthnicity != "White" && playerGender != "Man") {
+		if (playerEthnicity != "White" || playerGender != "Man") {
 			compskewtext = 'Your salary may have been skewed due to your demographic. As a <span class="statictext">'+playerEthnicity+'</span> <span class="statictext">'+playerGender+'</span>, the starting salary you are offered is often lower and negotiating compensation can be difficult.';
 		} else {
 			compskewtext = '';
@@ -398,7 +399,7 @@ $(document).ready(function() {
 
 		var peopletext = '<br><img src="people.png" height="35%"" text-align="center" class="logo" />'
 
-		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+jobtext+salarytext+compskewtext+peopletext;
+		finaletext = toughtext+goalstext+ethClasstext+wealthtext+didbesttext+eductext+locationtext+jobtext+salarytext+compskewtext+peopletext;
 
 		var bindsources = function () {
 			$('html').on('click', sources)
@@ -423,7 +424,7 @@ $(document).ready(function() {
 			   'background-size' : 'cover'
 			});
 			$('.content').css({
-				'margin-top': '5%'
+				'margin-top': '2%'
 			});
 			$('.content').html(
 				finaletext
